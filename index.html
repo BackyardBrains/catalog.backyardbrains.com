@@ -148,15 +148,21 @@
     <script>
         // Initialize the flipbook when page loads
         document.addEventListener('DOMContentLoaded', () => {
+            // Check if mobile (single page view) or desktop (double page view)
+            const isMobile = window.innerWidth <= 768;
+
             const pageFlip = new St.PageFlip(
                 document.getElementById('flipbook'),
                 {
                     width: 1231, // fixed width
                     height: 1831, // fixed height
-                    size: "stretch", // Allow stretching to fit container
-                    autoSize: true, // Re-enable auto-sizing for responsive behavior
+                    size: "stretch",
+                    autoSize: true,
                     showCover: false,
-                    flippingTime: 600
+                    flippingTime: 600,
+                    // Force orientation based on screen size
+                    usePortrait: isMobile, // Mobile: portrait (single page), Desktop: landscape (double page)
+                    mobileScrollSupport: true
                 }
             );
 
