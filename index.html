@@ -105,6 +105,20 @@
             top: auto !important;
             transform: none !important;
         }
+
+        /* Modern mobile-first approach: Force single page on mobile */
+        @media (max-width: 768px) {
+            /* Hide the right page on mobile to force single page view */
+            .stf__item.--right {
+                display: none !important;
+            }
+
+            /* Ensure left page takes full width on mobile */
+            .stf__item.--left {
+                width: 100% !important;
+                left: 0 !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -148,8 +162,6 @@
     <script>
         // Initialize the flipbook when page loads
         document.addEventListener('DOMContentLoaded', () => {
-            // Check if mobile (single page view) or desktop (double page view)
-            const isMobile = window.innerWidth <= 768;
 
             const pageFlip = new St.PageFlip(
                 document.getElementById('flipbook'),
@@ -160,11 +172,11 @@
                     autoSize: true,
                     showCover: false,
                     flippingTime: 600,
-                    // Force orientation based on screen size
-                    usePortrait: isMobile, // Mobile: portrait (single page), Desktop: landscape (double page)
+                    usePortrait: true, // Always allow portrait mode
                     mobileScrollSupport: true
                 }
             );
+
 
             // Get all page elements
             const pages = document.querySelectorAll('.c-flipbook__page');
