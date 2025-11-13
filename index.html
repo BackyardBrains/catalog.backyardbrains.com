@@ -116,35 +116,6 @@
             transform: none !important;
         }
 
-        /* Mobile optimization: Force single page display */
-        @media (max-width: 768px) {
-            /* Ensure single page takes full width on mobile */
-            .stf__item {
-                width: 100% !important;
-                left: 0 !important;
-            }
-
-            /* Hide right page explicitly on mobile to ensure single page view */
-            .stf__item.--right {
-                display: none !important;
-            }
-
-            /* Adjust flipbook positioning for mobile single page */
-            #flipbook {
-                padding: 10px !important;
-                align-items: flex-start !important;
-                justify-content: center !important;
-            }
-        }
-
-        /* Desktop optimization: Ensure two-page spread */
-        @media (min-width: 769px) {
-            /* Ensure two pages are visible on desktop */
-            .stf__item.--left,
-            .stf__item.--right {
-                display: block !important;
-            }
-        }
     </style>
 </head>
 <body>
@@ -192,13 +163,15 @@
             const pageFlip = new St.PageFlip(
                 document.getElementById('flipbook'),
                 {
-                    width: 1231, // fixed width
-                    height: 1831, // fixed height
-                    size: "stretch",
-                    autoSize: true,
+                    // Use smaller virtual page size so library can switch
+                    // between portrait (1 page) and landscape (2 pages)
+                    width: 400,
+                    height: 600,
+                    size: "fixed",
+                    autoSize: false,
                     showCover: false,
                     flippingTime: 600,
-                    usePortrait: true, // Allow portrait mode on small screens
+                    usePortrait: true,
                     mobileScrollSupport: true
                 }
             );
