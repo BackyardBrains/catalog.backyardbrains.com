@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=5.0">
     <title>BYB 2025 Product Catalog</title>
     <link rel="stylesheet" href="flipbook-js/flipbook.css">
     <style>
@@ -11,6 +11,11 @@
             padding: 0;
             height: 100%;
             font-family: sans-serif;
+            /* Enable better zoom support */
+            touch-action: manipulation;
+            -webkit-touch-callout: default;
+            -webkit-user-select: text;
+            user-select: text;
         }
 
         body {
@@ -59,6 +64,16 @@
             max-width: 300px;
             flex-shrink: 0;
         }
+
+        /* Zoom hint for better UX */
+        .zoom-hint {
+            font-size: 12px;
+            color: #666;
+            text-align: center;
+            margin: 5px auto 10px auto;
+            max-width: 300px;
+            font-style: italic;
+        }
         #download-btn:hover {
             background-color: #0056b3;
         }
@@ -90,12 +105,26 @@
             }
         }
 
-        /* Ensure images fill the pages properly */
+        /* Ensure images fill the pages properly and enable zoom */
         .stf__item img {
             width: 100%;
             height: 100%;
             object-fit: contain;
             display: block;
+            /* Enable zoom on images */
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+            /* Allow pinch-to-zoom on touch devices */
+            touch-action: pinch-zoom;
+            /* Prevent unwanted text selection during zoom */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        /* Add subtle zoom hint on hover for desktop */
+        .stf__item img:hover {
+            cursor: zoom-in;
         }
 
         /* Override page-flip centering to work with our layout */
@@ -168,6 +197,8 @@
     </div>
 
     <a id="download-btn" href="byb.2025.catalog.pdf" download="byb.2025.catalog.pdf">Download PDF</a>
+
+    <div class="zoom-hint">💡 Pinch to zoom or use Ctrl/Cmd + scroll for details</div>
 
     <script src="flipbook-js/flipbook.umd.min.js"></script>
     <script>
