@@ -135,19 +135,33 @@
             transform: none !important;
         }
 
-        /* Mobile optimization: Ensure proper single page display */
+        /* Mobile optimization: Force single page display */
         @media (max-width: 768px) {
-            /* Allow full width for single pages in portrait mode */
+            /* Ensure single page takes full width on mobile */
             .stf__item {
                 width: 100% !important;
-                max-width: none !important;
+                left: 0 !important;
             }
 
-            /* Adjust flipbook positioning for mobile */
+            /* Hide right page explicitly on mobile to ensure single page view */
+            .stf__item.--right {
+                display: none !important;
+            }
+
+            /* Adjust flipbook positioning for mobile single page */
             #flipbook {
-                padding: 10px !important; /* Reduce padding for more content space */
-                align-items: flex-start !important; /* Align to top instead of center */
-                justify-content: center !important; /* Keep horizontal center */
+                padding: 10px !important;
+                align-items: flex-start !important;
+                justify-content: center !important;
+            }
+        }
+
+        /* Desktop optimization: Ensure two-page spread */
+        @media (min-width: 769px) {
+            /* Ensure two pages are visible on desktop */
+            .stf__item.--left,
+            .stf__item.--right {
+                display: block !important;
             }
         }
     </style>
@@ -196,18 +210,35 @@
         // Initialize the flipbook when page loads
         document.addEventListener('DOMContentLoaded', () => {
 
+            // Determine initial orientation based on screen size
+            const isMobile = window.innerWidth <= 768;
+
+            // Different configurations for mobile vs desktop
+            const config = isMobile ? {
+                width: 1231, // fixed width
+                height: 1831, // fixed height
+                size: "fixed",
+                autoSize: false,
+                showCover: false,
+                flippingTime: 600,
+                usePortrait: true,
+                mobileScrollSupport: true,
+                startZIndex: 1
+            } : {
+                width: 1231, // fixed width
+                height: 1831, // fixed height
+                size: "stretch",
+                autoSize: true,
+                showCover: false,
+                flippingTime: 600,
+                usePortrait: false, // Force landscape on desktop
+                mobileScrollSupport: false,
+                startZIndex: 1
+            };
+
             const pageFlip = new St.PageFlip(
                 document.getElementById('flipbook'),
-                {
-                    width: 1231, // fixed width
-                    height: 1831, // fixed height
-                    size: "stretch",
-                    autoSize: true,
-                    showCover: false,
-                    flippingTime: 600,
-                    usePortrait: true, // Always allow portrait mode
-                    mobileScrollSupport: true
-                }
+                config
             );
 
 
