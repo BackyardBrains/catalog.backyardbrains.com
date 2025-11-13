@@ -113,10 +113,18 @@
                 display: none !important;
             }
 
-            /* Ensure left page takes full width on mobile */
+            /* Make single page larger on mobile by allowing full container usage */
             .stf__item.--left {
                 width: 100% !important;
                 left: 0 !important;
+                height: 100% !important;
+                max-width: none !important;
+            }
+
+            /* Allow flipbook to use more space on mobile for larger single page */
+            #flipbook {
+                max-width: none !important;
+                padding: 10px !important; /* Reduce padding for more content space */
             }
         }
     </style>
