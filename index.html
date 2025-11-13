@@ -11,8 +11,6 @@
             padding: 0;
             height: 100%;
             font-family: sans-serif;
-            /* Enable better zoom support */
-            touch-action: manipulation;
             -webkit-touch-callout: default;
             -webkit-user-select: text;
             user-select: text;
@@ -22,6 +20,8 @@
             display: flex;
             flex-direction: column;
             background-color: #f0f0f0;
+            /* Enable smooth scrolling */
+            -webkit-overflow-scrolling: touch;
         }
 
         /* Flipbook container takes up most of the screen */
@@ -65,15 +65,6 @@
             flex-shrink: 0;
         }
 
-        /* Zoom hint for better UX */
-        .zoom-hint {
-            font-size: 12px;
-            color: #666;
-            text-align: center;
-            margin: 5px auto 10px auto;
-            max-width: 300px;
-            font-style: italic;
-        }
         #download-btn:hover {
             background-color: #0056b3;
         }
@@ -105,26 +96,16 @@
             }
         }
 
-        /* Ensure images fill the pages properly and enable zoom */
+        /* Ensure images fill the pages properly */
         .stf__item img {
             width: 100%;
             height: 100%;
             object-fit: contain;
             display: block;
-            /* Enable zoom on images */
-            image-rendering: -webkit-optimize-contrast;
-            image-rendering: crisp-edges;
-            /* Allow pinch-to-zoom on touch devices */
-            touch-action: pinch-zoom;
-            /* Prevent unwanted text selection during zoom */
+            /* Prevent text selection */
             -webkit-user-select: none;
             -moz-user-select: none;
             user-select: none;
-        }
-
-        /* Add subtle zoom hint on hover for desktop */
-        .stf__item img:hover {
-            cursor: zoom-in;
         }
 
         /* Override page-flip centering to work with our layout */
@@ -203,42 +184,23 @@
 
     <a id="download-btn" href="byb.2025.catalog.pdf" download="byb.2025.catalog.pdf">Download PDF</a>
 
-    <div class="zoom-hint">💡 Pinch to zoom or use Ctrl/Cmd + scroll for details</div>
-
     <script src="flipbook-js/flipbook.umd.min.js"></script>
     <script>
         // Initialize the flipbook when page loads
         document.addEventListener('DOMContentLoaded', () => {
 
-            // Determine initial orientation based on screen size
-            const isMobile = window.innerWidth <= 768;
-
-            // Different configurations for mobile vs desktop
-            const config = isMobile ? {
-                width: 1231, // fixed width
-                height: 1831, // fixed height
-                size: "fixed",
-                autoSize: false,
-                showCover: false,
-                flippingTime: 600,
-                usePortrait: true,
-                mobileScrollSupport: true,
-                startZIndex: 1
-            } : {
-                width: 1231, // fixed width
-                height: 1831, // fixed height
-                size: "stretch",
-                autoSize: true,
-                showCover: false,
-                flippingTime: 600,
-                usePortrait: false, // Force landscape on desktop
-                mobileScrollSupport: false,
-                startZIndex: 1
-            };
-
             const pageFlip = new St.PageFlip(
                 document.getElementById('flipbook'),
-                config
+                {
+                    width: 1231, // fixed width
+                    height: 1831, // fixed height
+                    size: "stretch",
+                    autoSize: true,
+                    showCover: false,
+                    flippingTime: 600,
+                    usePortrait: true, // Allow portrait mode on small screens
+                    mobileScrollSupport: true
+                }
             );
 
 
