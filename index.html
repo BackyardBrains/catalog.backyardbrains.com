@@ -119,12 +119,15 @@
                 left: 0 !important;
                 height: 100% !important;
                 max-width: none !important;
+                top: 0 !important; /* Ensure page starts at top */
             }
 
-            /* Allow flipbook to use more space on mobile for larger single page */
+            /* Adjust flipbook positioning for mobile single page */
             #flipbook {
                 max-width: none !important;
                 padding: 10px !important; /* Reduce padding for more content space */
+                align-items: flex-start !important; /* Align to top instead of center */
+                justify-content: center !important; /* Keep horizontal center */
             }
         }
     </style>
