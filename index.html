@@ -35,6 +35,14 @@
             max-height: calc(100vh - 80px); /* Leave room for download button */
         }
 
+        /* Desktop-specific sizing to prevent images from being too large */
+        @media (min-width: 769px) {
+            #flipbook {
+                max-height: min(calc(100vh - 100px), 1400px); /* Cap height on desktop */
+                max-width: min(1231px, 90vw); /* Allow some scaling down on smaller desktops */
+            }
+        }
+
         /* Download button at the bottom */
         #download-btn {
             padding: 15px 30px;
@@ -146,7 +154,7 @@
                     width: 1231, // fixed width
                     height: 1831, // fixed height
                     size: "fixed",
-                    autoSize: true,
+                    autoSize: false, // Disable auto-sizing to prevent scaling issues
                     showCover: false,
                     flippingTime: 600
                 }
