@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BYB 2025 Product Catalog</title>
+    <link rel="stylesheet" href="flipbook-js/flipbook.css">
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            background-color: #f0f0f0;
+        }
+
+        /* Flipbook container takes up most of the screen */
+        #flipbook {
+            flex: 1;
+            width: 100%;
+            max-width: 1231px;
+            margin: 0 auto;
+            padding: 20px;
+            box-sizing: border-box;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 0; /* Allow flex item to shrink */
+        }
+
+        /* Download button at the bottom */
+        #download-btn {
+            padding: 15px 30px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+            text-align: center;
+            margin: 10px auto;
+            display: block;
+            max-width: 300px;
+            flex-shrink: 0;
+        }
+        #download-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            #download-btn {
+                padding: 12px 20px;
+                font-size: 14px;
+                margin: 5px auto;
+            }
+        }
+
+        @media (max-height: 600px) {
+            #download-btn {
+                padding: 8px 15px;
+                font-size: 14px;
+                margin: 5px auto;
+            }
+        }
+
+        /* Ensure images fill the pages properly */
+        .stf__item img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* Override page-flip centering to work with our layout */
+        .stf__parent {
+            position: relative !important;
+            left: auto !important;
+            top: auto !important;
+            transform: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="c-flipbook" id="flipbook">
+        <div class="c-flipbook__page"><img src="./byb.2025_Page_01.png" alt="Page 1"></div>
+        <div class="c-flipbook__page"><img src="./byb.2025_Page_02.png" alt="Page 2"></div>
+        <div class="c-flipbook__page"><img src="./byb.2025_Page_03.png" alt="Page 3"></div>
+        <div class="c-flipbook__page"><img src="./byb.2025_Page_04.png" alt="Page 4"></div>
+        <div class="c-flipbook__page"><img src="./byb.2025_Page_05.png" alt="Page 5"></div>
+        <div class="c-flipbook__page"><img src="./byb.2025_Page_06.png" alt="Page 6"></div>
+        <div class="c-flipbook__page"><img src="./byb.2025_Page_07.png" alt="Page 7"></div>
+        <div class="c-flipbook__page"><img src="./byb.2025_Page_08.png" alt="Page 8"></div>
+        <div class="c-flipbook__page"><img src="./byb.2025_Page_09.png" alt="Page 9"></div>
+        <div class="c-flipbook__page"><img src="./byb.2025_Page_10.png" alt="Page 10"></div>
+        <div class="c-flipbook__page"><img src="./byb.2025_Page_11.png" alt="Page 11"></div>
+        <div class="c-flipbook__page"><img src="./byb.2025_Page_12.png" alt="Page 12"></div>
+        <div class="c-flipbook__page"><img src="./byb.2025_Page_13.png" alt="Page 13"></div>
+        <div class="c-flipbook__page"><img src="./byb.2025_Page_14.png" alt="Page 14"></div>
+        <div class="c-flipbook__page"><img src="./byb.2025_Page_15.png" alt="Page 15"></div>
+        <div class="c-flipbook__page"><img src="./byb.2025_Page_16.png" alt="Page 16"></div>
+        <div class="c-flipbook__page"><img src="./byb.2025_Page_17.png" alt="Page 17"></div>
+        <div class="c-flipbook__page"><img src="./byb.2025_Page_18.png" alt="Page 18"></div>
+        <div class="c-flipbook__page"><img src="./byb.2025_Page_19.png" alt="Page 19"></div>
+        <div class="c-flipbook__page"><img src="./byb.2025_Page_20.png" alt="Page 20"></div>
+        <div class="c-flipbook__page"><img src="./byb.2025_Page_21.png" alt="Page 21"></div>
+        <div class="c-flipbook__page"><img src="./byb.2025_Page_22.png" alt="Page 22"></div>
+        <div class="c-flipbook__page"><img src="./byb.2025_Page_23.png" alt="Page 23"></div>
+        <div class="c-flipbook__page"><img src="./byb.2025_Page_24.png" alt="Page 24"></div>
+        <div class="c-flipbook__page"><img src="./byb.2025_Page_25.png" alt="Page 25"></div>
+        <div class="c-flipbook__page"><img src="./byb.2025_Page_26.png" alt="Page 26"></div>
+        <div class="c-flipbook__page"><img src="./byb.2025_Page_27.png" alt="Page 27"></div>
+        <div class="c-flipbook__page"><img src="./byb.2025_Page_28.png" alt="Page 28"></div>
+        <div class="c-flipbook__page"><img src="./byb.2025_Page_29.png" alt="Page 29"></div>
+        <div class="c-flipbook__page"><img src="./byb.2025_Page_30.png" alt="Page 30"></div>
+        <div class="c-flipbook__page"><img src="./byb.2025_Page_31.png" alt="Page 31"></div>
+    </div>
+
+    <a id="download-btn" href="byb.2025.catalog.pdf" download="byb.2025.catalog.pdf">Download PDF</a>
+
+    <script src="flipbook-js/flipbook.umd.min.js"></script>
+    <script>
+        // Initialize the flipbook when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            const pageFlip = new St.PageFlip(
+                document.getElementById('flipbook'),
+                {
+                    width: 1231, // fixed width
+                    height: 1831, // fixed height
+                    size: "fixed",
+                    autoSize: true,
+                    showCover: false,
+                    flippingTime: 600
+                }
+            );
+
+            // Get all page elements
+            const pages = document.querySelectorAll('.c-flipbook__page');
+
+            // Load pages from HTML elements
+            pageFlip.loadFromHTML(pages);
+
+            // Force update after loading
+            pageFlip.update();
+
+            // Add event listeners
+            pageFlip.on('init', (e) => {
+                console.log('Flipbook initialized');
+            });
+
+            pageFlip.on('flip', (e) => {
+                console.log('Page flipped to:', e.data);
+            });
+
+            // Fallback: ensure first page is visible after a short delay
+            setTimeout(() => {
+                pageFlip.update();
+                console.log('Fallback update called');
+            }, 500);
+        });
+    </script>
+</body>
+</html>
