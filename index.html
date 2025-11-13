@@ -135,25 +135,16 @@
             transform: none !important;
         }
 
-        /* Modern mobile-first approach: Force single page on mobile */
+        /* Mobile optimization: Ensure proper single page display */
         @media (max-width: 768px) {
-            /* Hide the right page on mobile to force single page view */
-            .stf__item.--right {
-                display: none !important;
-            }
-
-            /* Make single page larger on mobile by allowing full container usage */
-            .stf__item.--left {
+            /* Allow full width for single pages in portrait mode */
+            .stf__item {
                 width: 100% !important;
-                left: 0 !important;
-                height: 100% !important;
                 max-width: none !important;
-                top: 0 !important; /* Ensure page starts at top */
             }
 
-            /* Adjust flipbook positioning for mobile single page */
+            /* Adjust flipbook positioning for mobile */
             #flipbook {
-                max-width: none !important;
                 padding: 10px !important; /* Reduce padding for more content space */
                 align-items: flex-start !important; /* Align to top instead of center */
                 justify-content: center !important; /* Keep horizontal center */
