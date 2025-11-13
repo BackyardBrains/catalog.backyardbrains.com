@@ -32,6 +32,7 @@
             align-items: center;
             justify-content: center;
             min-height: 0; /* Allow flex item to shrink */
+            max-height: calc(100vh - 80px); /* Leave room for download button */
         }
 
         /* Download button at the bottom */
@@ -59,7 +60,13 @@
             #download-btn {
                 padding: 12px 20px;
                 font-size: 14px;
-                margin: 5px auto;
+                margin: 10px auto 20px auto; /* Add more bottom margin on mobile */
+                position: relative;
+                z-index: 10; /* Ensure it stays above other elements */
+            }
+
+            #flipbook {
+                max-height: calc(100vh - 100px); /* Leave more room on mobile */
             }
         }
 
@@ -67,7 +74,11 @@
             #download-btn {
                 padding: 8px 15px;
                 font-size: 14px;
-                margin: 5px auto;
+                margin: 5px auto 10px auto; /* Add bottom margin for low-height screens */
+            }
+
+            #flipbook {
+                max-height: calc(100vh - 60px); /* Leave room for download button on short screens */
             }
         }
 
